@@ -1,4 +1,24 @@
-<!DOCTYPE html><meta charset="utf-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>
+// Remove any stale portal service worker / caches (safe no-op if none).
+(function () {
+  'use strict';
+  if ('serviceWorker' in navigator && navigator.serviceWorker.getRegistration) {
+    navigator.serviceWorker.getRegistration('../..').then(function (reg) {
+      if (reg) return reg.unregister();
+    }).catch(function () {});
+  }
+  if (window.caches && caches.keys) {
+    caches.keys().then(function (keys) {
+      return Promise.all(keys.map(function (k) { return caches.delete(k); }));
+    }).catch(function () {});
+  }
+})();
+</script>
+<!-- Offline build: portal SDK replaced by local neutral driver (game-driver.js) -->
 <script src="./game-driver.js"></script>
 
   <title>Cocos Creator | Moving Co Mobile Main</title>
@@ -23,23 +43,17 @@
   <meta name="x5-fullscreen" content="true">
   <meta name="360-fullscreen" content="true">
 
-  <!--fix fireball/issues/3568 -->
+  <!--fix fireball/issues/3568-->
   <!--<meta name="browsermode" content="application">-->
-  <meta name="x5-page-mode" content="app">
 
-  <!---->
-  <!---->
-
-  <link rel="stylesheet" type="text/css" href="style.css"><body><div id="GameDiv">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body><div id="GameDiv">
       <div id="Cocos3dGameContainer">
         <canvas id="GameCanvas" oncontextmenu="event.preventDefault()" tabindex="0"></canvas>
       </div>
     </div>
 
-    <!-- GS Api 2.0 doesn't need to be injected in the template anymore -->
-    <!--  -->
-    
-    
 <!-- Polyfills bundle. -->
 <script src="src/polyfills.bundle.js" charset="utf-8"> </script>
 
