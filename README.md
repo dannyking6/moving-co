@@ -1,6 +1,6 @@
-# Moving Co. — Offline Build 🚚📦
+# Box Hauler — Offline Build 🚚📦
 
-You run a small-town moving company: drag, flip and cram sofas, fridges,
+You run a small-town hauling company: drag, flip and cram sofas, fridges,
 pianos and boxes into the truck, then drive carefully so nothing breaks.
 A charming physics-packing puzzle with a garage full of household chaos
 levels, unlockable trucks and a satisfying "everything fits" payoff.
